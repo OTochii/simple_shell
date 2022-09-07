@@ -1,29 +1,31 @@
 #include "shell.h"
 
 /**
- * shell process
- * 	1. prompt <-----
- * 	2. input       |
- * 	3. parse       |
- * 	4. execute -----
+ * main - function for 0-shell
+ * shell process - Building process
+ *1. prompt
+ *2. input
+ *3. parse
+ *4. execute
+ * @argc: character arguments
+ * @argv: variable arguments
+ * Return: 1 (Success)
  */
 
-int main (int argc __attribute__((unused)),
+int main(int argc __attribute__((unused)),
 		char **argv)
 {
 	char *line;
 	char **args;
 	int cmd_type;
-
 	(void) argv;
-	
 	signal(SIGINT, ctrl_C);
 
 	while (1)
 	{
 		print(" ($) ", STDOUT_FILENO);
 		line = _getline();
-		
+
 		if (line == NULL)
 		{
 			if (isatty(STDIN_FILENO))
